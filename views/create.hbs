@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create or Update Course - TradersHub</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <h1>TradersHub</h1>
+                </div>
+                <ul class="nav-links">
+                <li><a href="/index"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/course"><i class="fas fa-book"></i> Courses</a></li>
+                <li class="create-manage"><a href="/create"><i class="fas fa-chalkboard-teacher"></i> Create & Manage Courses</a></li>
+                <li><a href="/tradingview"><i class="fas fa-chart-line"></i> TradingView</a></li>
+            </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="course-management">
+        <div class="container">
+            <h2>Create & Manage Your Courses</h2>
+
+            <form id="course-form">
+                <h3>Create a New Course</h3>
+
+                <label for="course-title">Course Title:</label>
+                <input type="text" id="course-title" name="course-title" placeholder="Enter course title" required>
+
+                <label for="course-description">Course Description:</label>
+                <textarea id="course-description" name="course-description" placeholder="Write a brief description..." required></textarea>
+
+                <label for="lesson-title">Add Lessons:</label>
+                <input type="text" id="lesson-title" name="lesson-title" placeholder="Lesson Title">
+                <button type="button" id="add-lesson-btn">Add Lesson</button>
+                <ul id="lesson-list"></ul> <!-- Dynamic lesson list -->
+
+                <label for="quiz-title">Add Quizzes:</label>
+                <input type="text" id="quiz-title" name="quiz-title" placeholder="Quiz Title">
+                <input type="file" id="quiz-file" name="quiz-file">
+                <button type="button" id="add-quiz-btn">Add Quiz</button>
+                <ul id="quiz-list"></ul> <!-- Dynamic quiz list -->
+
+                <label for="assignment-title">Add Assignments:</label>
+                <input type="text" id="assignment-title" name="assignment-title" placeholder="Assignment Title">
+                <input type="file" id="assignment-file" name="assignment-file">
+                <button type="button" id="add-assignment-btn">Add Assignment</button>
+                <ul id="assignment-list"></ul> <!-- Dynamic assignment list -->
+
+                <label for="category">Course Category:</label>
+                <select id="category" name="category">
+                    <option value="Forex">Forex</option>
+                    <option value="Crypto">Crypto</option>
+                    <option value="Stocks">Stocks</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <button type="submit" id="publish-btn">Publish Course</button>
+                <button type="button" id="save-draft-btn">Save as Draft</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2024 TradersHub. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

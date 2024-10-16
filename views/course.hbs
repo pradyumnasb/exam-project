@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradersHub - Master the Markets</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="script.js"></script>
+
+
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <h1>TradersHub</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/index"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/course"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="create-manage"><a href="/create"><i class="fas fa-chalkboard-teacher"></i> Create &
+                            Manage Courses</a></li>
+                    <li><a href="/tradingview"><i class="fas fa-chart-line"></i> TradingView</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="all-courses">
+        <div class="container">
+            <h2>All Courses</h2>
+            <div class="filter-section">
+                <div class="category-filter">
+                    <button class="filter-btn" data-category="all">All</button>
+                    <button class="filter-btn" data-category="forex">Forex</button>
+                    <button class="filter-btn" data-category="crypto">Crypto</button>
+                    <button class="filter-btn" data-category="stocks">Stocks</button>
+                    <button class="filter-btn" data-category="other">Other</button>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search for courses...">
+                </div>
+            </div>
+            <div class="course" data-category="crypto">
+                <h3>Day Trading Techniques</h3>
+                <p>Understand day trading principles and strategies for maximizing profits in short time frames.</p>
+                <div class="progress-tracking">
+                    <label><input type="checkbox" class="progress-check"> Lesson 1: Day Trading Basics</label>
+                    <label><input type="checkbox" class="progress-check"> Lesson 2: Best Practices for Day
+                        Trading</label>
+                    <label><input type="checkbox" class="progress-check"> Assignment 1: Create a Day Trading
+                        Plan</label>
+                </div>
+                <button class="enroll-btn">Enroll Now</button>
+            </div>
+
+            <div class="course" data-category="stocks">
+                <h3>Market Psychology</h3>
+                <p>Explore the psychological aspects of trading and how to manage your emotions.</p>
+                <div class="progress-tracking">
+                    <label><input type="checkbox" class="progress-check"> Lesson 1: Understanding Market
+                        Psychology</label>
+                    <label><input type="checkbox" class="progress-check"> Lesson 2: Managing Emotions in Trading</label>
+                    <label><input type="checkbox" class="progress-check"> Assignment 1: Reflection on Trading
+                        Emotions</label>
+                </div>
+                <button class="enroll-btn">Enroll Now</button>
+            </div>
+
+            <div class="course" data-category="other">
+                <h3>Advanced Trading Strategies</h3>
+                <p>Dive into advanced trading techniques to enhance your trading performance.</p>
+                <div class="progress-tracking">
+                    <label><input type="checkbox" class="progress-check"> Lesson 1: Technical Analysis</label>
+                    <label><input type="checkbox" class="progress-check"> Lesson 2: Fundamental Analysis</label>
+                    <label><input type="checkbox" class="progress-check"> Assignment 1: Create a Trading
+                        Strategy</label>
+                </div>
+                <button class="enroll-btn">Enroll Now</button>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2024 TradersHub. All rights reserved.</p>
+    </footer>
+
+    <script src="/public/script.js"></script>
+</body>
+
+</html>

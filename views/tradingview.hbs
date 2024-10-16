@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradingView - Real-Time Market Data</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <h1>TradersHub</h1>
+                </div>
+                <ul class="nav-links">
+                <li><a href="/index"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/course"><i class="fas fa-book"></i> Courses</a></li>
+                <li class="create-manage"><a href="/create"><i class="fas fa-chalkboard-teacher"></i> Create & Manage Courses</a></li>
+                <li><a href="/tradingview"><i class="fas fa-chart-line"></i> TradingView</a></li>
+            </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="tradingview">
+        <div class="container">
+            <h2>Real-Time Market Data</h2>
+            <p>Access live Forex, Stock, and Crypto market data right from our platform using TradingView charts.</p>
+            <div class="tradingview-widget-container">
+                <div id="tradingview_1c8b8" style="height: 100%;"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                <script type="text/javascript">
+                    new TradingView.widget({
+                        "container_id": "tradingview_1c8b8",
+                        "autosize": true,
+                        "symbol": "NASDAQ:AAPL", 
+                        "interval": "D",
+                        "timezone": "Etc/UTC",
+                        "theme": "light",
+                        "style": "1",
+                        "locale": "en",
+                        "widget_type": "symbol_chart",
+                        "width": "100%",
+                        "height": "600", 
+                        "allow_symbol_change": true,
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <section class="market-news">
+        <div class="container">
+            <h2>Latest Market News</h2>
+            <ul>
+                <li>📈 Crypto markets surge after latest Fed announcement.</li>
+                <li>📊 Tech stocks rally as new AI technologies emerge.</li>
+                <li>📉 Forex trading sees increased volatility amid economic reports.</li>
+                <li>📊 Wall Street opens higher as investors weigh corporate earnings.</li>
+                <li>📈 Oil prices rise as OPEC+ considers production cuts.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2024 TradersHub. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
