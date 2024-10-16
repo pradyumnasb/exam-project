@@ -29,29 +29,29 @@
         <div class="container">
             <h2>Create & Manage Your Courses</h2>
 
-            <form id="course-form">
+            <form id="course-form" action="/auth/create" method="POST">
                 <h3>Create a New Course</h3>
 
                 <label for="course-title">Course Title:</label>
-                <input type="text" id="course-title" name="title" placeholder="Enter course title" required>
+                <input type="text" id="courseTitle" name="courseTitle" placeholder="Enter course title" required>
 
                 <label for="course-description">Course Description:</label>
-                <textarea id="course-description" name="desc" placeholder="Write a brief description..." required></textarea>
+                <textarea id="courseDescription" name="courseDescription" placeholder="Write a brief description..." required></textarea>
 
                 <label for="lesson-title">Add Lessons:</label>
-                <input type="text" id="lesson-title" name="lesson-title" placeholder="Lesson Title" required>
-                <input type="links" id="links" name="links">
+                {{!-- <input type="text" id="lesson-title" name="lesson-title" placeholder="Lesson Title" required> --}}
+                <input type="text" id="courseLink" name="courseLink" placeholder="Lesson Links">
                 <ul id="lesson-list"></ul> 
 
                 
 
                 <label for="assignment-title">Add Assignments:</label>
-                <input type="text" id="assignment-title" name="assignment-title" placeholder="Assignment Title">
-                <input type="file" id="assignment-file" name="assignment-file">
+                {{!-- <input type="text" id="assignment-title" name="assignment-title" placeholder="Assignment Title"> --}}
+                <input type="file" id="assignmentFile" name="assignmentFile">
                 <ul id="assignment-list"></ul> 
 
                 <label for="category">Course Category:</label>
-                <select id="category" name="category">
+                <select id="courseCategory" name="courseCategory">
                     <option value="Forex">Forex</option>
                     <option value="Crypto">Crypto</option>
                     <option value="Stocks">Stocks</option>
@@ -59,7 +59,7 @@
                 </select>
 
                 <button type="submit" id="publish-btn">Publish Course</button>
-                <button type="button" id="save-draft-btn">Save as Draft</button>
+                {{!-- <button type="button" id="save-draft-btn">Save as Draft</button> --}}
             </form>
         </div>
     </section>

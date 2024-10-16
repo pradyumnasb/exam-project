@@ -46,33 +46,38 @@
                     <input type="text" id="searchInput" placeholder="Search for courses...">
                 </div>
             </div>
-            <div class="course" data-category="crypto">
-                <h3>Day Trading Techniques</h3>
-                <p>Understand day trading principles and strategies for maximizing profits in short time frames.</p>
-                <div class="progress-tracking">
-                    <label><input type="checkbox" class="progress-check"> Lesson 1: Day Trading Basics</label>
-                    <label><input type="checkbox" class="progress-check"> Lesson 2: Best Practices for Day
-                        Trading</label>
-                    <label><input type="checkbox" class="progress-check"> Assignment 1: Create a Day Trading
-                        Plan</label>
+            <div class="courses-container" id="coursesContainer">
+                {{!-- {{#each courses}}
+                <div class="course" data-category="{{this.catagory}}">
+                    <h3>{{this.title}}</h3>
+                    <p>{{this.description}}</p>
+                    <a href="{{this.links}}" class="course-link">View Course</a>
+                    <button class="enroll-btn">Enroll Now</button>
                 </div>
-                <button class="enroll-btn">Enroll Now</button>
+                {{/each}} --}}
             </div>
 
-            <div class="course" data-category="stocks">
-                <h3>Market Psychology</h3>
-                <p>Explore the psychological aspects of trading and how to manage your emotions.</p>
+            {{#each courses}}
+            <div class="course" data-category="stocks" style="margin-bottom: 20px;">
+                <h3>{{this.title}}</h3>
+                <p>{{this.description}}</p>
                 <div class="progress-tracking">
-                    <label><input type="checkbox" class="progress-check"> Lesson 1: Understanding Market
-                        Psychology</label>
-                    <label><input type="checkbox" class="progress-check"> Lesson 2: Managing Emotions in Trading</label>
+                    <label><input type="checkbox" class="progress-check"> Lesson: <a href="">{{this.links}}</a></label>
+                    {{!-- <label><input type="checkbox" class="progress-check"> Lesson 2: Managing Emotions in
+                        Trading</label> --}}
+                    <br>
                     <label><input type="checkbox" class="progress-check"> Assignment 1: Reflection on Trading
                         Emotions</label>
                 </div>
                 <button class="enroll-btn">Enroll Now</button>
+                {{!-- PDF Download Link --}}
+                {{#if this.pdfLink}}
+                <a href="{{this.pdfLink}}" class="download-btn">Download PDF</a>
+                {{/if}}
             </div>
+            {{/each}}
 
-            <div class="course" data-category="other">
+            {{!-- <div class="course" data-category="other">
                 <h3>Advanced Trading Strategies</h3>
                 <p>Dive into advanced trading techniques to enhance your trading performance.</p>
                 <div class="progress-tracking">
@@ -82,7 +87,7 @@
                         Strategy</label>
                 </div>
                 <button class="enroll-btn">Enroll Now</button>
-            </div>
+            </div> --}}
         </div>
         </div>
     </section>

@@ -4,7 +4,6 @@ const fs = require('fs');
 
 // Define the upload directory
 const uploadsDir = path.join(__dirname, '../uploads'); // Adjust according to your project structure
-console.log("sdsadsa", uploadsDir);
 // Check if the uploads directory exists; if not, create it
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });

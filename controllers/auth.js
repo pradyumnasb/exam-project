@@ -1,7 +1,7 @@
 const mysql = require("mysql");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const upload = require('../middleware/uplopad');
+const upload = require("../middleware/uplopad");
 
 const db = mysql.createConnection({
   host: process.env.DATABASE_HOST,
@@ -94,65 +94,103 @@ exports.login = (req, res) => {
 
 // Handle POST request for creating a new course
 exports.createCourse = (req, res) => {
-    upload(req, res, (err) => {
-      if (err) {
-        return res.status(400).send({ error: err });
-      } else {
-        const {
-          courseTitle,
-          courseDescription,
-          courseLink,  // This will be the website link
-          courseCategory,
-        //   assignmentTitle,
-        } = req.body;
-  console.log("sdfghj", req.body);
-        // Validate required fields
-        if (!courseTitle || !courseDescription || !courseLink) {
-          return res
-            .status(400)
-            .send({ error: "Course Title, Description, and Link are required" });
-        }
-  
-        // Files will be available in req.files
-        const assignmentFile = req.files.assignmentFile
-          ? req.files.assignmentFile[0].filename
-          : null;
-  
-        // Prepare data for insertion
-        const newCourse = {
-          title: courseTitle,
-          desc: courseDescription,
-          links: courseLink,  // Website link directly
-          catagory: courseCategory,
-          assignments: assignmentFile, // Assignment file or null if not provided
-        };
-        console.log("asdfgsasaf", newCourse);
-        // Insert into the 'course' table
-        const query = `
+  upload(req, res, (err) => {
+    if (err) {
+      return res.status(400).send({ error: err });
+    } else {
+      const {
+        courseTitle,
+        courseDescription,
+        courseLink, // This will be the website link
+        courseCategory,
+        assignmentFile,
+      } = req.body;
+      console.log("sdfghj", req.body);
+      // Validate required fields
+      if (!courseTitle || !courseDescription || !courseLink) {
+        return res
+          .status(400)
+          .send({ error: "Course Title, Description, and Link are required" });
+      }
+
+      // Files will be available in req.files
+      // const assignmentFile = req.files.assignmentFile
+      //   ? req.files.assignmentFile[0].filename
+      //   : null;
+
+      // Prepare data for insertion
+      const newCourse = {
+        title: courseTitle,
+        desc: courseDescription,
+        links: courseLink, // Website link directly
+        catagory: courseCategory,
+        assignments: assignmentFile, // Assignment file or null if not provided
+      };
+      console.log("asdfgsasaf", newCourse);
+      // Insert into the 'course' table
+      const query = `
           INSERT INTO course (title, description, links, catagory, assignments) 
           VALUES (?, ?, ?, ?, ?)
         `;
-  
-        db.query(
-          query,
-          [newCourse.title, newCourse.desc, newCourse.links, newCourse.catagory, newCourse.assignments],
-          (error, results) => {
-            if (error) {
-              console.error(error);
-              return res
-                .status(500)
-                .send({ error: "Error saving course to the database" });
-            }
-  
-            res.status(200).send({
-              message: "Course created successfully",
-              data: newCourse,
-            });
+
+      db.query(
+        query,
+        [
+          newCourse.title,
+          newCourse.desc,
+          newCourse.links,
+          newCourse.catagory,
+          newCourse.assignments,
+        ],
+        (error, results) => {
+          if (error) {
+            console.error(error);
+            return res
+              .status(500)
+              .send({ error: "Error saving course to the database" });
           }
-        );
+            res.redirect("/course");
+
+        //   res.status(200).send({
+        //     message: "Course created successfully",
+        //     data: newCourse,
+        //   });
+        }
+      );
+    }
+  });
+};
+
+// Function to get all courses
+exports.getAllCourses = (req, res) => {
+  const query = 'SELECT * FROM course'; // SQL query to get all courses
+  db.query(query, (err, results) => {
+      if (err) {
+          console.error('Error retrieving courses:', err);
+          return res.status(500).json({ error: err.message }); // Handle database errors
       }
-    });
-  };
+
+      // Map results to exclude the assignments field and include a download link for the PDF
+      const coursesWithLinks = results.map(course => {
+        console.log("asdfgh", course);
+          // Construct the download link if assignments exist
+          const pdfLink = course.assignments ? `http://localhost:3000/download-pdf/${course.id}` : null;
+
+          // Return course data without assignments
+          return {
+              id: course.id,
+              title: course.title,
+              description: course.description,
+              links: course.links,
+              category: course.catagory, // Note: this assumes you want to keep the category
+              pdfLink: pdfLink // Add PDF link if it exists
+          };
+      });
+
+      res.json(coursesWithLinks); // Send the courses without assignments as JSON response
+  });
+};
+
 
 exports.logout = (req, res) => {
   // Clear the cookie
