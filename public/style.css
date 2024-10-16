@@ -13,7 +13,71 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    background-color: #f8f9fa;
+}
 
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    width: 100%;
+    background: linear-gradient(135deg, #4d79ff, #1e3bb3);
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1e3bb3, #4d79ff);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(66, 133, 244, 0.5);
+}
+
+.form-check-input {
+    margin-top: 7px;
+}
+
+.text-center a {
+    color: #1e3bb3;
+}
+
+nav .auth-btn {
+    margin-left: 15px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav .auth-btn:hover {
+    color: #d1e0ff;
+}
+
+.alert-danger {
+    color: #ff4d4d;
+    font-size: 14px;
+    font-weight: bold;
+}
 .container {
     width: 80%;
     margin: auto;
@@ -51,6 +115,26 @@ header {
     text-decoration: none;
 }
 
+.register-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+.form-check-input {
+    margin-top: 7px;
+}
+.text-center a {
+    color: #1e3bb3;
+}
 /* Course management section */
 .filter-section {
     display: flex;
