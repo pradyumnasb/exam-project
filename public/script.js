@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function filterCourses(category, query = '') {
         courses.forEach(course => {
-            const courseCategory = course.getAttribute('data-category');
+            const courseCategory = course.getAttribute('data-category').toLowerCase(); // Ensure it's lowercased
             const courseName = course.querySelector('h3').innerText.toLowerCase();
 
-            const isCategoryMatch = category === 'all' || courseCategory === category;
+            const isCategoryMatch = category === 'all' || courseCategory === category.toLowerCase();
             const isSearchMatch = courseName.includes(query);
 
             if (isCategoryMatch && isSearchMatch) {

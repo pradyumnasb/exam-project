@@ -29,7 +29,7 @@
         <div class="container">
             <h2>Create & Manage Your Courses</h2>
 
-            <form id="course-form" action="/auth/create" method="POST">
+            <form id="course-form" action="/auth/create" method="POST" enctype="multipart/form-data">
                 <h3>Create a New Course</h3>
 
                 <label for="course-title">Course Title:</label>
@@ -43,9 +43,7 @@
                 <input type="text" id="courseLink" name="courseLink" placeholder="Lesson Links">
                 <ul id="lesson-list"></ul> 
 
-                
-
-                <label for="assignment-title">Add Assignments:</label>
+                <label for="assignment-title">Add Course PDF:</label>
                 {{!-- <input type="text" id="assignment-title" name="assignment-title" placeholder="Assignment Title"> --}}
                 <input type="file" id="assignmentFile" name="assignmentFile">
                 <ul id="assignment-list"></ul> 

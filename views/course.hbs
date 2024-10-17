@@ -8,8 +8,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
     <script defer src="script.js"></script>
-
-
 </head>
 
 <body>
@@ -23,8 +21,7 @@
                 <ul class="nav-links">
                     <li><a href="/index"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="/course"><i class="fas fa-book"></i> Courses</a></li>
-                    <li class="create-manage"><a href="/create"><i class="fas fa-chalkboard-teacher"></i> Create &
-                            Manage Courses</a></li>
+                    <li class="create-manage"><a href="/create"><i class="fas fa-chalkboard-teacher"></i> Create & Manage Courses</a></li>
                     <li><a href="/tradingview"><i class="fas fa-chart-line"></i> TradingView</a></li>
                 </ul>
             </nav>
@@ -47,48 +44,22 @@
                 </div>
             </div>
             <div class="courses-container" id="coursesContainer">
-                {{!-- {{#each courses}}
-                <div class="course" data-category="{{this.catagory}}">
+                {{#each courses}}
+                <div class="course" data-category="{{this.catagory}}" style="margin-bottom: 20px;">
                     <h3>{{this.title}}</h3>
                     <p>{{this.description}}</p>
-                    <a href="{{this.links}}" class="course-link">View Course</a>
+                    <div class="progress-tracking">
+                        <label style="display:none;"><input type="checkbox" class="progress-check"> Lesson: <a href="">{{this.links}}</a></label>
+                        <br>
+                        <label style="display:none;"><input type="checkbox" class="progress-check"> Course PDF:
+                            {{#if this.pdfLink}}
+                            <a href="{{this.pdfLink}}" class="download-btn">Download PDF</a>
+                            {{/if}}</label>
+                    </div>
                     <button class="enroll-btn">Enroll Now</button>
                 </div>
-                {{/each}} --}}
+                {{/each}}
             </div>
-
-            {{#each courses}}
-            <div class="course" data-category="stocks" style="margin-bottom: 20px;">
-                <h3>{{this.title}}</h3>
-                <p>{{this.description}}</p>
-                <div class="progress-tracking">
-                    <label><input type="checkbox" class="progress-check"> Lesson: <a href="">{{this.links}}</a></label>
-                    {{!-- <label><input type="checkbox" class="progress-check"> Lesson 2: Managing Emotions in
-                        Trading</label> --}}
-                    <br>
-                    <label><input type="checkbox" class="progress-check"> Assignment 1: Reflection on Trading
-                        Emotions</label>
-                </div>
-                <button class="enroll-btn">Enroll Now</button>
-                {{!-- PDF Download Link --}}
-                {{#if this.pdfLink}}
-                <a href="{{this.pdfLink}}" class="download-btn">Download PDF</a>
-                {{/if}}
-            </div>
-            {{/each}}
-
-            {{!-- <div class="course" data-category="other">
-                <h3>Advanced Trading Strategies</h3>
-                <p>Dive into advanced trading techniques to enhance your trading performance.</p>
-                <div class="progress-tracking">
-                    <label><input type="checkbox" class="progress-check"> Lesson 1: Technical Analysis</label>
-                    <label><input type="checkbox" class="progress-check"> Lesson 2: Fundamental Analysis</label>
-                    <label><input type="checkbox" class="progress-check"> Assignment 1: Create a Trading
-                        Strategy</label>
-                </div>
-                <button class="enroll-btn">Enroll Now</button>
-            </div> --}}
-        </div>
         </div>
     </section>
 
@@ -102,6 +73,39 @@
     </footer>
 
     <script src="/public/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const enrollButtons = document.querySelectorAll(".enroll-btn");
+
+            enrollButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    this.textContent = "Enrolled"; 
+                    this.disabled = true; 
+
+                    const courseContainer = this.parentElement; 
+                    const progressTracking = courseContainer.querySelector(".progress-tracking");
+                    
+                    
+                    const lessonLabel = progressTracking.querySelector("label:first-of-type");
+                    lessonLabel.style.display = "block"; 
+                    
+                    
+                    const assignmentLabel = progressTracking.querySelector("label:last-of-type");
+                    assignmentLabel.style.display = "block"; 
+                });
+            });
+
+           
+            const allProgressTracks = document.querySelectorAll(".progress-tracking");
+            allProgressTracks.forEach(progress => {
+                const lessonLabel = progress.querySelector("label:first-of-type");
+                lessonLabel.style.display = "none"; 
+
+                const assignmentLabel = progress.querySelector("label:last-of-type");
+                assignmentLabel.style.display = "none"; 
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -55,9 +55,9 @@ app.get("/login", (req, res) => {
 app.get("/course", async (req, res) => {
     try {
         const response = await axios.get('http://localhost:3000/auth/courses'); 
-        console.log("cvm",response);// Replace with your API endpoint
-        const data = response.data; // Assuming the API returns JSON data
-        res.render("course", { courses: data }); // Pass the data to the course view
+        console.log("cvm",response);
+        const data = response.data; 
+        res.render("course", { courses: data }); 
     } catch (error) {
         console.error(error);
         res.status(500).send("Error fetching course data");
@@ -93,14 +93,14 @@ app.get('/download-pdf/:id', (req, res) => {
             return res.status(404).send('No PDF data found for this course.');
         }
 
-        // Check if the data is base64 encoded and decode if necessary
+        
         if (typeof assignments === 'string') {
             assignments = Buffer.from(assignments, 'base64');
         }
 
         const pdfData = Buffer.from(assignments, 'binary');
 
-        // Save the PDF data to a file to check if it's valid
+       
         const filePath = path.join(__dirname, `course-${courseId}.pdf`);
         fs.writeFile(filePath, pdfData, (err) => {
             if (err) {
@@ -111,20 +111,15 @@ app.get('/download-pdf/:id', (req, res) => {
             console.log(`PDF saved to ${filePath}`);
         });
 
-        // Set response headers for downloading the PDF
         res.set({
             'Content-Type': 'application/pdf',
             'Content-Disposition': `attachment; filename=course-${courseId}.pdf`,
             'Content-Length': pdfData.length
         });
 
-        // Send the PDF data as a response
         res.send(pdfData);
     });
 });
-
-
-
 
 
 app.use('/auth', require('./routes/auth'));
